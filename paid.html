@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title id="title"></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="theme-color" content="#3B5998" />
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;" />
+    <link rel="stylesheet" href="paid.css">
+
+</head>
+
+<body>
+        $(if chap-id)
+        <form name="sendin" action="$(link-login-only)" method="post">
+            <input type="hidden" name="username" />
+            <input type="hidden" name="password" />
+            <input type="hidden" name="dst" value="$(link-orig)" />
+            <input type="hidden" name="popup" value="true" />
+        </form>
+
+        <script type="text/javascript" src="md5.js"></script>
+        <script type="text/javascript">
+            function doLogin() {
+                document.sendin.username.value = document.login.username.value;
+                document.sendin.password.value = hexMD5('$(chap-id)' + document.login.password.value +
+                    '$(chap-challenge)');
+                document.sendin.submit();
+                return false;
+            }
+        </script>
+        $(endif)
+
+            <div id="main" class="main">
+            
+            <div class="box">
+                <img src="./img/logo.png" alt="JENY SAS"/>
+            </div>
+            <div>
+                <div>
+                 <button onclick="declencherPaiement()">
+                     <p class="time">1h----300f</p>
+                     <kkiapay-widget amount="300" key="98e54ee0ca6011eebcb247471d5c9d70" position="center" sandbox="true" data=""
+                         callback="google.com">
+                     </kkiapay-widget>
+                 </button>
+                 <button onclick="declencherPaiement()">
+                     <p class="time">3h----500f</p>
+                     <kkiapay-widget amount="500" key="98e54ee0ca6011eebcb247471d5c9d70" position="center" sandbox="true" data=""
+                         callback="google.com">
+                     </kkiapay-widget>
+                 </button>
+                </div>
+                <div>
+                 <button onclick="declencherPaiement()">
+                     <p class="time">10h----1000f</p>
+                     <kkiapay-widget amount="1000" key="98e54ee0ca6011eebcb247471d5c9d70" position="center" sandbox="true" data=""
+                         callback="google.com">
+                     </kkiapay-widget>
+                 </button>
+                 <button onclick="declencherPaiement()">
+                     <p class="time">24h----5000f</p>
+                     <kkiapay-widget amount="5000" key="98e54ee0ca6011eebcb247471d5c9d70" position="center" sandbox="true" data=""
+                         callback="google.com">
+                     </kkiapay-widget>
+                 </button>
+                </div>
+           <!-- <div class="box" id="infologin">
+            </div>
+            <form id="form" name="login" action="$(link-login-only)" method="post" $(if chap-id) onSubmit="return doLogin()"
+              
+            $(endif)>
+                <input type="hidden" name="dst" value="$(link-orig)" />
+                <input type="hidden" name="popup" value="true" />
+                <input class="username" name="username" type="text" value="" style="border-radius: 15px;"/>
+                <input class="password" name="password" placeholder="Password" type="password" style="border-radius: 15px;"/>
+
+                <button class="button" type="submit"><i class="icon icon-login">&#xe803;</i> Login</button>
+
+            </form>-->
+
+           <!-- $(if trial == 'yes')
+            <div class="box">Code gratuit <a style="text-decoration: underline; color:#fff;" href="$(link-login-only)?dst=$(link-orig-esc)&amp;username=T-$(mac-esc)">klik
+                    di sini</a></div>
+            $(endif)
+
+            $(if error)<div class="notice">$(error)</div>$(endif)-->
+
+           <!-- <table class="table">
+                    <caption style="font-size: 16px; font-weight: bold; margin-bottom:5px;">TARIFS</caption>
+                    <tr>
+                        <th>HEURES</th>
+                        <th>TARIFS</th>
+                    </tr>
+                    <tr>
+                        <td>1H</td>
+                        <td>CFA 100</td>
+                    </tr>
+                    <tr>
+                        <td>3H</td>
+                        <td>CFA 250</td>
+                    </tr>
+                    <tr>
+                        <td>1J</td>
+                        <td>CFA 400</td>
+                    </tr>
+                    <tr>
+                        <td>1S</td>
+                        <td>CFA 1000</td>
+                    </tr>
+                    <tr>
+                        <td>1M</td>
+                        <td>CFA 2500 (1PERSONNE)</td>
+                    </tr>
+                    <tr>
+                        <td>1M</td>
+                        <td>CFA 3500 (2PERSONNES)</td>
+                    </tr>
+                </table>-->
+                <br />
+                <div>
+                    CONNEXION INTERNET HAUT DÉBIT ILLIMITÉ
+                </div>
+        </div>
+        <br />
+        <div class="box" style="color:#fff;">
+            <i> <a style="color:#fff; text-decoration:none;" class="link" href="https://jenysas.bj">JENY SAS </a>est un fournisseur à internet et régistre du .bj</i> </br>
+            <i>Tél: 00229 62 12 15 15</i><br />
+            <i>Copyright © 2024 JENY SAS</i><br />
+            <!-- Tolong jangan dihilangkan bagian ini-->
+        </div>
+
+<script type="text/javascript">
+var hostname = window.location.hostname;
+document.getElementById('title').innerHTML = hostname  + " > login";
+
+document.login.username.focus();
+
+var infologin = document.getElementById('infologin');
+infologin.innerHTML = "Veuillez saisir votre ticket pour se connecter.";
+
+// login page 2 mode by Laksamadi Guko
+var username = document.login.username;
+var password = document.login.password;
+
+username.placeholder = "Username";
+
+// set password = username
+function setpass() {
+    var user = username.value;
+    var password = password.value
+    //user = user.toLowerCase();
+    username.value = user;
+    password.value = password;
+}
+
+username.onkeyup = setpass;
+
+// change to voucher mode
+function voucher() {
+    username.focus();
+    username.onkeyup = setpass;
+    username.placeholder = "Kode Voucher";
+    username.style = "border-radius:3px;"
+    password.type = "hidden";
+    infologin.innerHTML = "Masukkan Kode Voucher kemudian klik login.";
+}
+
+// change to member mode
+function member() {
+    username.focus();
+    username.onkeyup = "";
+    username.placeholder = "Username";
+    username.style = "border-radius:3px 3px 0px 0px;"
+    password.type = "password";
+    infologin.innerHTML = "Masukkan Username dan Password kemudian klik login.";
+}
+</script>
+<script src="https://cdn.kkiapay.me/k.js"></script>
+</body>
+
+</html>
