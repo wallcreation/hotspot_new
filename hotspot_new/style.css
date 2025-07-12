@@ -198,55 +198,6 @@ iframe  {
 
 .notice{
   background-color:#fff8e1;
-}
-
-.payment-button {
-  background-color: #007bff;
-  border: none;
-  border-radius: 5px;
-  color: white;
-  font-weight: bold;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 14px;
-  cursor: pointer;
-  width: 150px;
-  height: 30px;
-  margin: 5px;
-  transition: all 0.3s ease;
-}
-
-.payment-button:hover {
-  background-color: #0056b3;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-}
-
-.payment-button:active {
-  background-color: #004085;
-  transform: translateY(1px);
-}
-
-.table th {
-  padding: 10px;
-  text-align: center;
-}
-
-.table tr {
-  border-bottom: 1px solid rgba(255,255,255,0.1);
-}
-
-.table tr:last-child {
-  border-bottom: none;
-}
-
-.table {
-  width: 100%;
-  margin-top: 20px;
-}
-
-.notice{
-  background-color:#fff8e1;
   border-radius:3px;
   padding:5px;
   margin-bottom:10px;

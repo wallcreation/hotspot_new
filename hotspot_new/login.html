@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title id="title"></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="theme-color" content="#3B5998" />
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;" />
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+        $(if chap-id)
+        <form name="sendin" action="$(link-login-only)" method="post">
+            <input type="hidden" name="username" />
+            <input type="hidden" name="password" />
+            <input type="hidden" name="dst" value="$(link-orig)" />
+            <input type="hidden" name="popup" value="true" />
+        </form>
+
+        <script type="text/javascript" src="md5.js"></script>
+        <script type="text/javascript">
+            function doLogin() {
+                document.sendin.username.value = document.login.username.value;
+                document.sendin.password.value = hexMD5('$(chap-id)' + document.login.password.value +
+                    '$(chap-challenge)');
+                document.sendin.submit();
+                return false;
+            }
+        </script>
+        $(endif)
+
+            <div id="main" class="main">
+              <img src="./img/logo.png" alt="" style="height: 100px;">
+            <div class="box">
+            </div>
+          
+            
+            <form id="form" name="login" action="$(link-login-only)" method="post" $(if chap-id) onSubmit="return doLogin()"
+              
+            $(endif)>
+                <input type="hidden" name="dst" value="$(link-orig)" />
+                <input type="hidden" name="popup" value="true" />
+                <input class="username" name="username" type="text" value="" style="border-radius: 15px;" placeholder="Code"/>
+                <input class="password" name="password" placeholder="Password" type="password" style="border-radius: 15px;"/>
+
+                <button class="button" type="submit"><i class="icon icon-login">&#xe803;</i> Login</button>
+
+            </form>
+
+            $(if trial == 'yes')
+            <div class="box">Code gratuit <a style="text-decoration: underline; color:#fff;" href="$(link-login-only)?dst=$(link-orig-esc)&amp;username=T-$(mac-esc)">klik
+                    di sini</a></div>
+            $(endif)
+
+            $(if error)<div class="notice">$(error)</div>$(endif)
+
+            
+                <br />
+                <div >
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Tarif</th>
+                                <th>Code</th>
+                                <th>Validité</th>
+                            </tr>
+                            <tr>
+                                <th>100f</th>
+                                <th>3H</th>
+                                <th>6H</th>
+                            </tr>
+                            <tr>
+                                <th>200f</th>
+                                <th>7H</th>
+                                <th>12H</th>
+                            </tr>
+                            <tr>
+                                <th>300f</th>
+                                <th>12H</th>
+                                <th>24H</th>
+                            </tr>
+                            <tr>
+                                <th>500f</th>
+                                <th>24H</th>
+                                <th>48H</th>
+                            </tr>
+                            <tr>
+                                <th>1000f</th>
+                                <th>72H</th>
+                                <th>4 Jours</th>
+                            </tr>
+                            <tr>
+                                <th>2000f</th>
+                                <th>1 Semaine</th>
+                                <th>8 Jours</th>
+                            </tr>
+                            <tr>
+                                <th>5000f</th>
+                                <th>1 Mois</th>
+                                <th>35 Jours</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+                <div style="display: flex;justify-content: space-between;margin-top: 30px;">
+                    <img src="./img/emplacement.png" alt="" style="height: 30px;">
+                    <strong style="text-align: left;margin-left: 15px;">Code disponible > Cabine MTN devant la clinique Agboton </strong>
+                </div>
+                
+        </div>
+        <br />
+       
+
+
+<script src="https://cdn.kkiapay.me/k.js"></script>
+<script src="index.js"></script>
+</body>
+
+</html>
